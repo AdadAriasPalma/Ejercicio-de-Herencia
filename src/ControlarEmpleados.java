@@ -1,8 +1,9 @@
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 
 public class ControlarEmpleados {
-    private ArrayList<Empleado> misEmpleados;
+    private List<Empleado> misEmpleados;
 
     public ControlarEmpleados() {
         misEmpleados = new ArrayList<>();
@@ -14,7 +15,15 @@ public class ControlarEmpleados {
 
     public String mostrarEmpleados() {
         StringBuilder cadena = new StringBuilder();
-        misEmpleados.forEach(e -> cadena.append(e.toString()).append("\n"));
+        for (Empleado e : misEmpleados) {
+            if (e instanceof Jefe) {
+                cadena.append("Jefe: ").append(e.toString()).append("\n");
+            } else if (e instanceof Auxiliar) {
+                cadena.append("Auxiliar: ").append(e.toString()).append("\n");
+            } else {
+                cadena.append("Empleado: ").append(e.toString()).append("\n");
+            }
+        }
         return cadena.toString();
     }
 
